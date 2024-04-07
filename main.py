@@ -1,3 +1,9 @@
+import hashlib
+
+#funcion para cifrar la contraseña introducida para posteriormente compararla con la del fichero de los usuarios
+def cifrar(contraseña):
+    return hashlib.md5(contraseña.encode()).hexdigest()
+
 #funcion para el inicio de sesion con un numero de intentos espeficados al principio del programa y se llama
 #la funcion de cifrar para cifrar la contraseña que se va a introducir y se comparar con el valor de las claves
 def inicioSesion():
