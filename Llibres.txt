@@ -1,0 +1,6 @@
+Títol|Autor/a|Any de publicació|Genere|ISBN
+Cien Años de Soledad|Gabriel García Márquez|1967|Novela|978-3-12-579850-2
+1984|George Orwell|1949|Ciencia Ficción|978-0-452-28423-4
+El Principito|Antoine de Saint-Exupéry|1943|Fábula|978-3-16-148410-0
+Fahrenheit 451|Ray Bradbury|1953|Distopía|978-1-59307-301-9
+Don Quijote de la Mancha|Miguel de Cervantes|1605|Novela|978-84-206-1933-3

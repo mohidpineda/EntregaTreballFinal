@@ -1,0 +1,4 @@
+Usuario|Contraseña
+Joan|014436b6640304b2cfad8a43f4aaad1a
+Jordi|df6c219449d956bfa1ab8eb518d66b23
+Alba|88c0c5061788993b71dd6cd4d9896129
