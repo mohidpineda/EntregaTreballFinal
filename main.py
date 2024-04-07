@@ -51,3 +51,32 @@ def agregarLibro():
         archivoLibros.close()
     except FileNotFoundError:
         print("error: no se encontro el archivo de libros.")
+
+#funcion para eliminar un libro, se pide el ttulo del libro que se desea eliminar y posteriormente se vacia el fichero y se
+#va escibiendo de nuevo linea por linea y si el titulo se encuentra an alguna lina la condicon booleana se vuelve True y no escribe
+#ese libro para que asi el fichero final este sin el libro que queriamos eliminar
+def eliminarLibro(titulo):
+    if not titulo.strip():
+        print("pon el título del libro que deseas eliminar porfavor.")
+        return
+
+    try:
+        archivoLectura = open("Llibres.txt", "r")
+        lineas = archivoLectura.readlines()
+        archivoLectura.close()
+
+        encontrado = False
+        archivoEscritura = open("Llibres.txt", "w")
+        for linea in lineas:
+            if titulo not in linea:
+                archivoEscritura.write(linea)
+            else:
+                encontrado = True
+        archivoEscritura.close()
+
+        if encontrado:
+            print("libro eliminado correctamente.")
+        else:
+            print("el libro no se encontro.")
+    except FileNotFoundError:
+        print("error: no se encontro el archivo de libros.")
