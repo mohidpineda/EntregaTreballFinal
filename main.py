@@ -20,3 +20,34 @@ def inicioSesion():
 
     print("has fallado ya tres veces, piensa tus credenciales y vuelve ;).")
     return None
+
+#funcion para agregar un libro y añadiendolo al final del fichero, primero se verifica de que el libro no exista y luego 
+#se añade con el atributo (a) para que sea al final del fichero
+def agregarLibro():
+    titulo = input("titulo del libro: ")
+    autor = input("autor/a: ")
+    año = input("año de publicacion: ")
+    genero = input("genero: ")
+    isbn = input("isbn: ")
+
+    if not titulo.strip() or not autor.strip() or not año.strip() or not genero.strip() or not isbn.strip():
+        print("error: todos los campos son obligatorios si quieres agregar un libro.")
+        return
+
+    try:
+        archivoLibros = open("Llibres.txt", "r")
+        lineas = archivoLibros.readlines()
+        archivoLibros.close()
+
+        for linea in lineas:
+            if titulo in linea:
+                print("este libro ya existe.")
+                archivoLibros.close()
+                return
+
+        archivoLibros = open("Llibres.txt", "a")
+        archivoLibros.write(f"{titulo}|{autor}|{año}|{genero}|{isbn}\n")
+        print("libro agregado con exito.")
+        archivoLibros.close()
+    except FileNotFoundError:
+        print("error: no se encontro el archivo de libros.")
