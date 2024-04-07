@@ -62,6 +62,21 @@ def mostrarLibro(titulo):
     except FileNotFoundError:
         print("error: no se encontro el archivo de libros.")
 
+#funcion para mostar todos los libros de la biblioteca, se hace lo mismo que la funcin anterior pero en este 
+#caso no hace falta que se cumpla ninguna condicion
+def mostrarLibros():
+    try:
+        archivoLibros = open("Llibres.txt", "r")
+
+        next(archivoLibros)
+
+        for linea in archivoLibros:
+            atributos = linea.strip().split("|")
+            print(f"titulo: {atributos[0]} - autor: {atributos[1]} - año: {atributos[2]} - genero: {atributos[3]} - isbn: {atributos[4]}")
+        archivoLibros.close()
+    except FileNotFoundError:
+        print("error: no se encontro el archivo de libros.")
+
 #funcion para agregar un libro y añadiendolo al final del fichero, primero se verifica de que el libro no exista y luego 
 #se añade con el atributo (a) para que sea al final del fichero
 def agregarLibro():
