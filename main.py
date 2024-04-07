@@ -80,3 +80,36 @@ def eliminarLibro(titulo):
             print("el libro no se encontro.")
     except FileNotFoundError:
         print("error: no se encontro el archivo de libros.")
+
+#funcion para editar algun libro, se pide un titulo de alguna libro en el principio del programa. Se leen todas las lineas(libros) del 
+#fichero, se abre el fichero para la sobreescriptura i la linea que contenga el titulo proporcionado ira preguntado si se quiero cambiar 
+#algun atributo del libro o dejarlo igual
+def editarLibro(titulo):
+    if not titulo.strip():
+        print("pon el título del libro que deseas editar porfavor.")
+        return
+
+    try:
+        archivoLectura = open("Llibres.txt", "r")
+        lineas = archivoLectura.readlines()
+        archivoLectura.close()
+
+        archivoEscritura = open("Llibres.txt", "w")
+        for linea in lineas:
+            atributos = linea.strip().split("|")
+            if titulo in atributos[0]:
+                print("editando el libro:", atributos[0])
+                nuevoTitulo = input(f"pon el nuevo titulo del libro (actual: {atributos[0]}): ") or atributos[0]
+                nuevoAutor = input(f"pon el nuevo autor/a (actual: {atributos[1]}): ") or atributos[1]
+                nuevoAño = input(f"pon el nuevo año de publicacion (actual: {atributos[2]}): ") or atributos[2]
+                nuevoGenero = input(f"pon el nuevo genero (actual: {atributos[3]}): ") or atributos[3]
+                nuevoIsbn = input(f"pon el nuevo isbn (actual: {atributos[4]}): ") or atributos[4]
+
+                nuevaLinea = f"{nuevoTitulo}|{nuevoAutor}|{nuevoAño}|{nuevoGenero}|{nuevoIsbn}\n"
+                archivoEscritura.write(nuevaLinea)
+                print("libro editado con exito.")
+            else:
+                archivoEscritura.write(linea)
+        archivoEscritura.close()
+    except FileNotFoundError:
+        print("error: no se encontro el archivo de libros.")
