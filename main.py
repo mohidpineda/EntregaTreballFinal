@@ -42,6 +42,26 @@ def inicioSesion():
     print("has fallado ya tres veces, piensa tus credenciales y vuelve ;).")
     return None
 
+#funcion para mostar un libro en concreto recorriendo el fichero linea por linea comprovando si el titulo 
+#introducido se encuentra en la posicion 0 de cada linea(libro)
+def mostrarLibro(titulo):
+    if not titulo.strip():
+        print("pon el título del libro que deseas mostrar porfavor.")
+        return
+
+    try:
+        archivoLibros = open("Llibres.txt", "r")
+        for linea in archivoLibros:
+            atributos = linea.strip().split("|")
+            if titulo in atributos[0]:
+                print(f"titulo: {atributos[0]} - autor: {atributos[1]} - año: {atributos[2]} - genero: {atributos[3]} - isbn: {atributos[4]}")
+                archivoLibros.close()
+                return
+        print("no hemos encontrado el libro.")
+        archivoLibros.close()
+    except FileNotFoundError:
+        print("error: no se encontro el archivo de libros.")
+
 #funcion para agregar un libro y añadiendolo al final del fichero, primero se verifica de que el libro no exista y luego 
 #se añade con el atributo (a) para que sea al final del fichero
 def agregarLibro():
