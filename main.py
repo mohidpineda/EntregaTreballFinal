@@ -169,3 +169,39 @@ def editarLibro(titulo):
         archivoEscritura.close()
     except FileNotFoundError:
         print("error: no se encontro el archivo de libros.")
+        
+#menu principal con las opciones que se podran escoger
+usuario = inicioSesion()
+if usuario:
+    while True:
+        print("\n***************************")
+        print("menu principal")
+        print("---------------------------")
+        print("1. mostrar un libro")
+        print("2. mostrar todos los libros")
+        print("3. agregar un libro")
+        print("4. eliminar un libro")
+        print("5. editar un libro")
+        print("6. salir del programa")
+        opcion = input("selecciona una opcion: ")
+
+        print("\n")
+
+        if opcion == "1":
+            titulo = input("pon el titulo del libro: ")
+            mostrarLibro(titulo)
+        elif opcion == "2":
+            mostrarLibros()
+        elif opcion == "3":
+            agregarLibro()
+        elif opcion == "4":
+            titulo = input("pon el titulo del libro a eliminar: ")
+            eliminarLibro(titulo)
+        elif opcion == "5":
+            titulo = input("pon el titulo del libro a editar: ")
+            editarLibro(titulo)
+        elif opcion == "6":
+            print("saliendo del programa...")
+            break
+        else:
+            print("opcion no valida. por favor, seleccione una opcion valida.")        
