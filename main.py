@@ -4,6 +4,21 @@ import hashlib
 def cifrar(contraseña):
     return hashlib.md5(contraseña.encode()).hexdigest()
 
+#funcion para guardar los usuarios en forma de diccionario haciendo que la contraseña 
+#cifrada sea el valor de la clave que es el nombre del usuario
+def leerUsuarios():
+    usuarios = {}
+    try:
+        archivoUsuarios = open("Usuaris.txt", "r")
+        lineas = archivoUsuarios.readlines()
+        archivoUsuarios.close()
+        for linea in lineas:
+            usuario, contraseña = linea.strip().split("|")
+            usuarios[usuario] = contraseña
+    except FileNotFoundError:
+        print("error: no se encontro el archivo de usuarios.")
+    return usuarios
+
 #funcion para el inicio de sesion con un numero de intentos espeficados al principio del programa y se llama
 #la funcion de cifrar para cifrar la contraseña que se va a introducir y se comparar con el valor de las claves
 def inicioSesion():
